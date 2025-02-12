@@ -11,38 +11,20 @@
     <thead class=" table table-dark">
 
         <tr>
-            <th>
-                nomer
-            </th>
-            <th>
-                nama
-            </th>
-            <th>
-                alamat
-            </th>
-            <th>
-                jenis kelamin
-            </th>
-            <th>
-                menu
-            </th>
+            <th>nomer</th>
+            <th>nama </th>
+            <th> alamat</th>
+            <th> jenis kelamin</th>
+            <th> menu</th>
         </tr>
     </thead>
 
     @foreach ($siswas as $item)
     <tr>
-        <td>
-            {{ $loop->iteration }}
-        </td>
-        <td>
-            {{ $item['nama'] }}
-        </td>
-        <td>
-            {{ $item['alamat'] }}
-        </td>
-        <td>
-            {{ $item['jenis_kelamin'] }}
-        </td>
+        <td> {{ $loop->iteration }}</td>
+        <td> {{ $item['nama'] }}  </td>
+        <td> {{ $item['alamat'] }} </td>
+        <td> {{ $item['jenis_kelamin'] }}</td>
         <td>
             <form action="{{ route('siswa.delete',$item->id) }}" method="post">
                 @method('DELETE')
@@ -50,8 +32,8 @@
                 <button class="btn btn-danger" type="submit">
                     hapus
                 </button>
+                <a href="{{ route('siswa.edit', $item->id) }}" class="btn btn-warning">edit</a>
             </form>
-            <a href="{{ route('siswa.edit', $item->id) }}" class="btn btn-warning">edit</a>
         </td>
     </tr>
     @endforeach
