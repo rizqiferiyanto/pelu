@@ -6,16 +6,29 @@
 
 <div class="row col-5">
     <form action="{{ route('siswa.add.process') }}" method="post">
-
         @csrf
 
         <div class="mb-3">
             <label for="nama" class="form-label">nama</label>
-            <input type="text" class="form-control" id="nama" placeholder="masukan nama" name="nama">
+            <input type="text" class="form-control" id="nama" placeholder="masukan nama" name="nama"
+            value="{{ old('nama') }}">
+            @error('nama' )
+            <div class="text-danger">
+                {{ $message }}
+            </div>
+
+            @enderror
         </div>
         <div class="mb-3">
             <label for="alamat" class="form-label">alamat</label>
             <textarea class="form-control" id="alamat" rows="3" name="alamat" placeholder="masukan alamat"></textarea>
+           @error('alamat')
+           <div class="text-danger">
+            {{ $message }}
+           </div>
+
+
+           @enderror
         </div>
         <div class="mb-3">
             <label for="jenis_kelamin" >jenis kelamin</label>
@@ -24,6 +37,12 @@
             <option value="laki-laki">laki-laki</option>
             <option value="perempuan">perempuan</option>
         </select>
+        @error('jenis_kelamin')
+        <div class="text-danger">
+            {{ $message }}
+        </div>
+
+        @enderror
     </div>
 
     <button type="submit" class="btn btn-primary">submit</button>

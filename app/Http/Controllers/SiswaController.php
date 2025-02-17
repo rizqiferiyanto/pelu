@@ -15,6 +15,16 @@ class SiswaController extends Controller
         return view('siswa.create');
     }
     public function store(Request $request) {
+        $validated = $request-> validate([
+            'nama'=> 'required',
+            'alamat' => 'required',
+            'jenis_kelamin'=> 'required',
+        ],[
+            'nama.required'=> "kolom nama harus di isi",
+            'alamat.required'=>"kolom alamat harus di isi",
+            'jenis_kelamin.required'=>"kolom jenis_kelamin harus di isi"
+        ]);
+
         //untuk menyimpen data siswa
         // data yang di sempen adalah nama,alamat dann jenis kelamin
         $data = Student::create([

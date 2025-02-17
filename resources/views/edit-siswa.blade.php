@@ -5,7 +5,7 @@
 <h1>form edit data</h1>
 
 <div class="row col-5">
-    <form action="{{ route('siswa.add.process') }}" method="post">
+    <form action="{{ route('siswa.update', $data['id']) }}" method="post">
 
         @csrf
         @method('PUT')
